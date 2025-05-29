@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(CartItem::class);
     }
+
+    public function user_address()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
 }
