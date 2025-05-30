@@ -67,7 +67,6 @@
               d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
             />
           </svg>
-
         </button>
         <div v-else>
           <Link
@@ -89,21 +88,24 @@
 
         <!-- Dropdown menu -->
         <div
+          v-if="auth.user"
           class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600"
           id="user-dropdown"
         >
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-            <span class="block text-sm text-gray-500 truncate dark:text-gray-400"
-              >name@flowbite.com</span
-            >
+            <span class="block text-sm text-gray-900 dark:text-white">{{
+              auth.user.name
+            }}</span>
+            <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{
+              auth.user.email
+            }}</span>
           </div>
           <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
-              <a
-                href="#"
+              <Link
+                :href="route('dashboard')"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Dashboard</a
+                >Dashboard</Link
               >
             </li>
             <li>
@@ -122,7 +124,8 @@
             </li>
             <li>
               <Link
-                href="#"
+                :href="route('logout')"
+                method="post"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >Sign out</Link
               >
@@ -204,12 +207,17 @@
 </template>
 
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue'
+import { initFlowbite } from "flowbite";
+import { Link, usePage } from "@inertiajs/vue3";
+import { computed, onMounted } from "vue";
 const canLogin = usePage().props.canLogin;
 const canRegister = usePage().props.canRegister;
 const auth = usePage().props.auth;
 const cart = computed(() => usePage().props.cart);
+
+onMounted(() => {
+  initFlowbite();
+});
 </script>
 
 <style lang="scss" scoped></style>

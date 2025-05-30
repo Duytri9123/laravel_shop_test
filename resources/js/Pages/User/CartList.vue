@@ -1,8 +1,8 @@
 <template>
   <UserLayouts>
-    <section class="text-gray-600 body-font relative">
-      <div class="container px-5 py-2 mx-auto flex sm:flex-nowrap flex-wrap">
-        <div class="lg:w-2/3 md:w-1/2 rounded-lg sm:mr-10 p-10">
+    <section class="text-gray-600 max-w-screen-xl mx-auto body-font relative">
+      <div class="container px-5 py-2 mx-auto flex sm:flex-wrap lg:flex-nowrap flex-wrap">
+        <div class="lg:w-2/3 md:w-full rounded-lg sm:mr-10 p-10">
           <!-- lis tof cart -->
 
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -125,7 +125,7 @@
           <!-- end -->
         </div>
         <div
-          class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0"
+          class="lg:w-1/3 md:w-full bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0"
         >
           <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Summary</h2>
           <p class="leading-relaxed mb-5 text-gray-600">Total : $ {{ total }}</p>
